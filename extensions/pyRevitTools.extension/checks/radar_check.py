@@ -231,7 +231,7 @@ def get_design_options_elements(document=doc):
 # ________________________________________________________________ MAIN FUNCTION
 # ______________________________________________________________________________
 def check_model_extents(document=doc):
-    unit_system = get_model_units_type(document=doc)
+    unit_system = get_model_units_type(document)
     # _______________________________________________________________HTML Styles
     output = script.get_output()
     output.add_style('cover {color:black; font-size:24pt; font-weight:bold;}')
@@ -371,7 +371,7 @@ def check_model_extents(document=doc):
                             "   " +
                             str(x.Name) +
                             " - Is part of " +
-                            str(doc.GetElement(setid).Name) +
+                            str(document.GetElement(setid).Name) +
                             " - " +
                             str(x.DesignOption.Name)
                             )
@@ -482,14 +482,5 @@ class ModelChecker(PreflightTestCase):
     name = "10 Mile Radar"
     author = "Tay Othman"
 
-    def setUp(self, doc, output):
-        pass
-
     def startTest(self, doc, output):
         check_model_extents(doc)
-
-    def tearDown(self, doc, output):
-        pass
-
-    def doCleanups(self, doc, output):
-        pass
